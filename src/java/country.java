@@ -1,7 +1,9 @@
+import java.util.ArrayList;
+
 public class country {
     int id;
     String tag;
-    String player;
+    ArrayList<String> player;
     String ideology;
     int mils=0;
     int civs=0;
@@ -11,4 +13,10 @@ public class country {
     int totmp=0;
     int numdivs=0;
     int numboats=0;
+
+    country(int iid, String itag, String iplayer){
+        id = iid;
+        tag=itag;
+        player.add(iplayer);
+    }
 }

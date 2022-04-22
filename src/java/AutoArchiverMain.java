@@ -34,6 +34,9 @@ public class AutoArchiverMain {
         return cleaned;
     }
 
+    /*
+    Initial country info
+     */
     public String pcountry(File save){
         String temp="";
         ArrayList<country> countries = new ArrayList<country>;
@@ -43,10 +46,33 @@ public class AutoArchiverMain {
             pot.nextLine();
             line++;
         }
+        line =0;
         while(!temp.contains("save_version")){
+            temp =pot.nextLine();
+            temp = cleaner(temp);
+            String tc = temp;
 
+            temp =pot.nextLine();
+            temp = cleaner(temp);
+            String nm = temp;
+
+            //COOP INFO (ADD PLAYERS TO 1 COUNTRY!)
+            temp =pot.nextLine();
+
+            temp =pot.nextLine();
+            temp = cleaner(temp);
+            int id = Integer.parseInt(temp);
+
+            country ctemp = new country(id,tc,nm);
+            countries.add(ctemp);
+            line++;
+            //skip dead line
+            pot.nextLine();
         }
-        return country;
+
+
+        //need to parse obj into string
+        return ;
     }
 
     public static final String HOI_4_EXTENSION = ".hoi4";
