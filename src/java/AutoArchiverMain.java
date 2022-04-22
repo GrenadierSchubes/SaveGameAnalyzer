@@ -4,8 +4,50 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Scanner;
+import java.util.ArrayList;
+
 
 public class AutoArchiverMain {
+
+    /*
+    Push these elsewhere later, rework to know what line scanner is on, pass scanner obj too?
+     Used to pull lines 2-6 of the file
+    */
+    public String gettop(File save){
+        String top ="";
+        String line,clean;
+        Scanner pot = new Scanner(save);
+        pot.nextLine();//skip 1st line since it has no info
+        for(int i=1; i<7;i++){
+            line = pot.nextLine();
+            clean = cleaner(line);
+            top.concat(top + "\r\n" + clean);
+        }
+        return top;
+    }
+
+    public String cleaner(String toclean){
+        String cleaned = "";
+        var clean = toclean.replaceAll("{|}","");
+        cleaned = clean.replaceAll("=",": ");
+        return cleaned;
+    }
+
+    public String pcountry(File save){
+        String temp="";
+        ArrayList<country> countries = new ArrayList<country>;
+        Scanner pot = new Scanner(save);
+        int line =0;
+        while(line !=9){
+            pot.nextLine();
+            line++;
+        }
+        while(!temp.contains("save_version")){
+
+        }
+        return country;
+    }
 
     public static final String HOI_4_EXTENSION = ".hoi4";
 
@@ -49,6 +91,10 @@ public class AutoArchiverMain {
                 lastFileSize = currentAutosave.length();
                 System.out.println("autosaveSize: " + currentAutosave.length());
                 //Broken file look up........
+
+                var top =gettop(currentAutosave);
+
+
                 //File archivedAutoSave = new File(archiveDir.toUri()+"\\autosave-"+String.valueOf(counter)+HOI_4_EXTENSION);
                 String autoSaveArchive = "C:\\Users\\ericm\\archive\\autosave-"+ counter +HOI_4_EXTENSION;
                 File archivedAutoSave = new File(autoSaveArchive);
@@ -64,3 +110,4 @@ public class AutoArchiverMain {
     }
 
 }
+
